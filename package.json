@@ -1,40 +1,73 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "dev-lighthouse",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "개발 지식을 정리하고 공유하는 블로그입니다.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "정승옥 <vsnm25@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/vsnm25/dev-lighthouse"
+  },
   "dependencies": {
+    "@fontsource/merriweather": "^4.5.14",
+    "@fontsource/montserrat": "^4.5.13",
     "gatsby": "^5.2.0",
+    "gatsby-omni-font-loader": "^2.0.2",
+    "gatsby-plugin-feed": "^5.2.0",
     "gatsby-plugin-image": "^3.2.0",
     "gatsby-plugin-manifest": "^5.2.0",
     "gatsby-plugin-sharp": "^5.2.0",
+    "gatsby-remark-images": "^7.2.0",
+    "gatsby-remark-prismjs": "^7.2.0",
+    "gatsby-remark-responsive-iframe": "^6.2.0",
     "gatsby-source-filesystem": "^5.2.0",
+    "gatsby-transformer-remark": "^6.2.0",
     "gatsby-transformer-sharp": "^5.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "prismjs": "^1.29.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-sort-destructure-keys": "^1.4.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-typescript-sort-keys": "^2.1.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.8.0",
+    "typescript": "^4.9.3"
   },
+  "homepage": "https://github.com/vsnm25/dev-lighthouse#readme",
   "keywords": [
     "gatsby"
   ],
   "license": "0BSD",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsnm25/dev-lighthouse.git"
+  },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
+    "dev": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "prepare": "husky install"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "lint-staged": {
+    "*.{ts,tsx}": ["eslint --fix", "prettier --write"]
   }
 }
