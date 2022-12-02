@@ -85,6 +85,7 @@ const BlogIndex = ({ data }: PageProps<DataProps>) => {
                           'transform-gpu duration-300 ease-out'
                         )}
                         image={image}
+                        objectFit="cover"
                       />
                     </Link>
                   </div>

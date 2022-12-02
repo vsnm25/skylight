@@ -35,6 +35,7 @@ interface DataProps {
       title: string;
       date: string;
       description: string;
+      tags: null | string[];
     };
   };
 }
@@ -47,15 +48,32 @@ const BlogPostTemplate = ({
   return (
     <Layout title={siteTitle}>
       <article itemScope className="mx-auto max-w-3xl px-4 pt-6">
-        <header className="flex items-end justify-between">
-          <h1 className="text-4xl font-bold">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+        <header className="flex flex-col items-start justify-between gap-2">
+          <h1 className="title-highlight text-4xl font-bold text-blue200">
+            {post.frontmatter.title}
+          </h1>
+          <p className="text-blue200">{post.frontmatter.date}</p>
         </header>
-        <hr className="my-6 h-px w-full bg-blue200" />
+        <hr className="my-6 h-px w-full border-gray100" />
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="gatsby-md"
         />
+        {post.frontmatter.tags && (
+          <>
+            <div className="flex gap-2">
+              {post.frontmatter.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-md bg-blue100 px-2 py-1 text-xs text-white100"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+            <hr className="my-6 h-px w-full border-gray100" />
+          </>
+        )}
       </article>
       <nav className="mx-auto mt-12 max-w-3xl px-4">
         <ul className="flex items-center justify-between gap-4">
@@ -135,6 +153,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
