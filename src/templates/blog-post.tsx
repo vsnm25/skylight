@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, graphql, PageProps, HeadProps } from 'gatsby';
 
-import Bio from '../components/bio';
+import clsx from 'clsx';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 
@@ -41,51 +41,59 @@ interface DataProps {
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
-  location,
 }: PageProps<DataProps>) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <article
-        itemScope
-        className="blog-post"
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+    <Layout title={siteTitle}>
+      <article itemScope className="mx-auto max-w-3xl px-4 pt-6">
+        <header className="flex items-end justify-between">
+          <h1 className="text-4xl font-bold">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
+        <hr className="my-6 h-px w-full bg-blue200" />
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
+          className="gatsby-md"
         />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
+      <nav className="mx-auto mt-12 max-w-3xl">
+        <ul className="flex items-center justify-between gap-4">
+          <li className="w-1/2">
             {previous && (
-              <Link rel="prev" to={previous.fields.slug}>
-                ← {previous.frontmatter.title}
+              <Link
+                className={clsx(
+                  'inline-flex flex-col items-start justify-center rounded-md p-3',
+                  'h-16 w-full',
+                  'bg-blue100 hover:bg-blue300',
+                  'text-lg text-blue300 hover:text-white100',
+                  'transition-color duration-300 ease-out'
+                )}
+                rel="prev"
+                to={previous.fields.slug}
+              >
+                <span className="text-sm text-gray100 hover:text-inherit">
+                  Prev
+                </span>
+                {previous.frontmatter.title}
               </Link>
             )}
           </li>
-          <li>
+          <li className="w-1/2">
             {next && (
-              <Link rel="next" to={next.fields.slug}>
-                {next.frontmatter.title} →
+              <Link
+                className={clsx(
+                  'inline-flex flex-col items-end justify-center rounded-md p-3',
+                  'h-16 w-full',
+                  'bg-blue100 hover:bg-blue300',
+                  'text-lg  text-blue300 hover:text-white100',
+                  'transition-color duration-300 ease-out'
+                )}
+                rel="next"
+                to={next.fields.slug}
+              >
+                <span className="text-sm text-gray100">Next</span>
+                {next.frontmatter.title}
               </Link>
             )}
           </li>

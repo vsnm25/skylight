@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
+import clsx from 'clsx';
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -22,22 +22,28 @@ const Bio = () => {
   const author = data.site.siteMetadata?.author;
 
   return (
-    <div className="bio">
-      <StaticImage
-        alt="Profile picture"
-        className="bio-avatar"
-        formats={['auto', 'webp', 'avif']}
-        height={50}
-        layout="fixed"
-        quality={95}
-        src="../images/profile.png"
-        width={50}
-      />
-      {author?.name && (
-        <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
-        </p>
-      )}
+    <div className="sm:h-30 h-80 bg-blue200">
+      <div
+        className={clsx(
+          'mx-auto flex h-full max-w-3xl',
+          "bg-[url('../images/profile.png')] bg-contain bg-right bg-no-repeat "
+        )}
+      >
+        <div className="mx-auto flex w-full items-center justify-start gap-4 px-4">
+          {author?.name && (
+            <div className="flex flex-col">
+              <p className="break-keep text-2xl font-bold text-white100 sm:text-xl">
+                안녕하세요. 👋
+                <br />
+                프론트엔드 엔지니어 <strong>{author.name}</strong>
+                입니다.
+                <br />
+                {author?.summary || null}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

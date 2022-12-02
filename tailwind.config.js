@@ -1,3 +1,4 @@
+const lineCamp = require('@tailwindcss/line-clamp');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,7 +7,22 @@ module.exports = {
     './src/templates/**/*.{ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // white
+        white100: '#FFFFFF',
+        // blue
+        blue100: '#92b7f6',
+        blue200: '#024AAD',
+        blue300: '#232E52',
+        // gray
+        gray100: '#AAAAAA',
+      },
+    },
+    screens: {
+      sm: { max: '576px' },
+      md: { max: '768px' },
+    },
   },
-  plugins: [],
+  plugins: [lineCamp],
 };

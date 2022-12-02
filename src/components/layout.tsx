@@ -1,38 +1,41 @@
-import { PageProps, Link } from 'gatsby';
+import clsx from 'clsx';
+import { Link } from 'gatsby';
 import React, { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;
   title: ReactNode;
-  location: PageProps['location'];
 }
 
-const Layout = ({ location, title, children }: LayoutProps) => {
-  const rootPath = '/';
-  const isRootPath = location.pathname === rootPath;
-  let header;
-
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    );
-  }
-
+const Layout = ({ title, children }: LayoutProps) => {
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with{' '}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+    <div className="relative min-h-screen">
+      <header className="fixed inset-x-0 z-10 backdrop-blur-sm">
+        <div className="mx-auto flex h-16 max-w-3xl items-center px-4">
+          <h1 className="text-3xl font-bold text-blue300">
+            <Link to="/">{title}</Link>
+          </h1>
+        </div>
+      </header>
+      <main className="pt-16 pb-40">{children}</main>
+      <footer
+        className={clsx(
+          'absolute inset-x-0 bottom-0 mx-auto bg-gray100 py-6',
+          'h-32 w-full',
+          'flex items-center justify-center'
+        )}
+      >
+        <div className="flex flex-col items-center justify-center gap-4">
+          <span className="text-white100">
+            © {new Date().getFullYear()} 정승옥 All rights reserved.
+          </span>
+          <span className="text-white100">
+            Built with{' '}
+            <a className="underline" href="https://www.gatsbyjs.com">
+              Gatsby
+            </a>
+          </span>
+        </div>
       </footer>
     </div>
   );

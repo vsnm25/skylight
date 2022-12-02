@@ -2,6 +2,8 @@
 title: Hello World
 date: '2015-05-01T22:12:03.284Z'
 description: 'Hello World'
+tags: ['태그1', '태그2', '태그3']
+thumbnail: './salty_egg.jpg'
 ---
 
 This is my first post on my new fake blog! How exciting!
@@ -226,6 +228,4 @@ This paragraph has some `code` in it.
 
     This paragraph has some `code` in it.
 
-![Alt Text](https://via.placeholder.com/200x50 'Image Title')
-
-    ![Alt Text](https://via.placeholder.com/200x50 "Image Title")
+![Alt Text](http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg 'Image Title')

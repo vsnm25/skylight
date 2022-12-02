@@ -6,8 +6,7 @@ module.exports = {
     title: 'skylight',
     author: {
       name: '정승옥',
-      summary:
-        '사회적 가치를 이끌 수 있는 개발을 좋아하는 프론트엔드 엔지니어입니다.',
+      summary: '배운 것을 정리하고 공유합니다.',
     },
     description: '개발 관련 지식을 공유하고 정리합니다.',
     siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/',
@@ -17,6 +16,16 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-remark-classes`,
+      options: {
+        classMap: {
+          'heading[depth=1]': 'text-2xl',
+          'heading[depth=2]': 'text-xl',
+          paragraph: 'text-base',
+        },
+      },
+    },
     {
       resolve: 'gatsby-omni-font-loader',
       options: {

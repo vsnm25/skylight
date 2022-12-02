@@ -2,4 +2,4 @@
 import './src/styles/global.css';
 
 // Highlighting for code blocks
-import 'prismjs/themes/prism.css';
+import './src/styles/prim-vsc-dark-plus.css';

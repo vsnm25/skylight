@@ -12,10 +12,10 @@ interface DataProps {
   };
 }
 
-const NotFoundPage = ({ data, location }: PageProps<DataProps>) => {
+const NotFoundPage = ({ data }: PageProps<DataProps>) => {
   const siteTitle = data.site.siteMetadata.title;
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <h1>404: 원하시는 페이지를 찾을 수 없습니다</h1>
     </Layout>
   );
