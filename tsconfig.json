@@ -13,8 +13,7 @@
     "paths": {},                                      
     "moduleResolution": "node",                       
     "resolveJsonModule": true,                        
-    "allowJs": true,                                  
-    "checkJs": true,                                  
+    "allowJs": true,                                                                   
     "declaration": true,                              
     "noEmit": true,                                   
     "isolatedModules": true,                          
@@ -32,6 +31,6 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "*.js"],
   "exclude": ["node_modules", ".cache", "public"]
 }

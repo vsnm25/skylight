@@ -13,6 +13,10 @@ module.exports = {
     siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/',
   },
   plugins: [
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-image',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-omni-font-loader',
       options: {
@@ -29,7 +33,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -64,8 +67,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
