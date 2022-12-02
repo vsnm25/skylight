@@ -68,9 +68,9 @@ const BlogIndex = ({ data }: PageProps<DataProps>) => {
                 className={clsx(
                   'flex sm:flex-col',
                   'items-center gap-2',
-                  'shadow-[0_0_5px_0_rgba(0,0,0,0.2)]',
                   'overflow-hidden',
-                  'relative'
+                  'relative',
+                  'border border-gray-200'
                 )}
               >
                 {image && (
@@ -79,7 +79,7 @@ const BlogIndex = ({ data }: PageProps<DataProps>) => {
                       <GatsbyImage
                         alt="썸네일 이미지"
                         className={clsx(
-                          'w-60 sm:w-full',
+                          'w-56 sm:w-full',
                           'h-56',
                           'hover:scale-110',
                           'transform-gpu duration-300 ease-out'

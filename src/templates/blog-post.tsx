@@ -57,7 +57,7 @@ const BlogPostTemplate = ({
           className="gatsby-md"
         />
       </article>
-      <nav className="mx-auto mt-12 max-w-3xl">
+      <nav className="mx-auto mt-12 max-w-3xl px-4">
         <ul className="flex items-center justify-between gap-4">
           <li className="w-1/2">
             {previous && (
@@ -66,14 +66,14 @@ const BlogPostTemplate = ({
                   'inline-flex flex-col items-start justify-center rounded-md p-3',
                   'h-16 w-full',
                   'bg-blue100 hover:bg-blue300',
-                  'text-lg text-blue300 hover:text-white100',
+                  'text-lg text-white100',
                   'transition-color duration-300 ease-out'
                 )}
                 rel="prev"
                 to={previous.fields.slug}
               >
-                <span className="text-sm text-gray100 hover:text-inherit">
-                  Prev
+                <span className="text-sm text-white100 hover:text-inherit">
+                  이전
                 </span>
                 {previous.frontmatter.title}
               </Link>
@@ -86,13 +86,13 @@ const BlogPostTemplate = ({
                   'inline-flex flex-col items-end justify-center rounded-md p-3',
                   'h-16 w-full',
                   'bg-blue100 hover:bg-blue300',
-                  'text-lg  text-blue300 hover:text-white100',
+                  'text-lg text-white100',
                   'transition-color duration-300 ease-out'
                 )}
                 rel="next"
                 to={next.fields.slug}
               >
-                <span className="text-sm text-gray100">Next</span>
+                <span className="text-sm text-white100">다음</span>
                 {next.frontmatter.title}
               </Link>
             )}
