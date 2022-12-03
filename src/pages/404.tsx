@@ -1,8 +1,10 @@
-import { graphql, PageProps } from 'gatsby';
+import clsx from 'clsx';
+import { graphql, Link, PageProps } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 
-import Layout from '@/components/layout';
-import Seo from '@/components/seo';
+import Layout from '@/components/Layout';
+import Seo from '@/components/Seo';
 
 interface DataProps {
   site: {
@@ -16,7 +18,26 @@ const NotFoundPage = ({ data }: PageProps<DataProps>) => {
   const siteTitle = data.site.siteMetadata.title;
   return (
     <Layout title={siteTitle}>
-      <h1>404: 원하시는 페이지를 찾을 수 없습니다</h1>
+      <section
+        className={clsx(
+          'flex flex-col items-center justify-center',
+          'mx-auto h-[calc(100vh_-_192px)] max-w-3xl',
+          'bg-blue200'
+        )}
+      >
+        <StaticImage alt="404페이지 이미지" src="../images/404.png" />
+        <div className="flex flex-col items-center gap-4">
+          <h1 className="text-2xl font-bold text-white100 sm:text-base">
+            원하시는 페이지를 찾을 수 없습니다
+          </h1>
+          <Link
+            className="text-lg text-white100 hover:underline sm:text-sm"
+            to="/"
+          >
+            돌아가기
+          </Link>
+        </div>
+      </section>
     </Layout>
   );
 };
