@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React, { FC } from 'react';
 
+import Tag from './Tag';
+
 interface PostCardProps {
   date: string;
   description: string;
@@ -61,26 +63,9 @@ const PostCard: FC<PostCardProps> = ({
               </section>
             </div>
             <div className="flex gap-2">
-              <span
-                className={clsx(
-                  'inline-flex items-center',
-                  'h-6 px-2',
-                  'bg-black100 text-xs font-bold text-white100'
-                )}
-              >
-                {date}
-              </span>
+              <Tag type="dark">{date}</Tag>
               {tags?.map((tag) => (
-                <span
-                  key={tag}
-                  className={clsx(
-                    'inline-flex items-center',
-                    'h-6 px-2',
-                    'bg-blue200 text-xs font-bold text-white100'
-                  )}
-                >
-                  #{tag}
-                </span>
+                <Tag key={tag}>#{tag}</Tag>
               ))}
             </div>
           </div>

@@ -3,10 +3,10 @@ import { graphql, PageProps } from 'gatsby';
 import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import * as React from 'react';
 
-import Bio from '@/components/bio';
-import Layout from '@/components/layout';
+import IntroDuctionBanner from '@/components/IntroDuctionBanner';
+import Layout from '@/components/Layout';
 import PostCard from '@/components/PostCard';
-import Seo from '@/components/seo';
+import Seo from '@/components/Seo';
 
 interface DataProps {
   allMarkdownRemark: {
@@ -40,7 +40,7 @@ const BlogIndex = ({ data }: PageProps<DataProps>) => {
 
   return (
     <Layout title={siteTitle}>
-      <Bio />
+      <IntroDuctionBanner />
       <div className="mx-auto max-w-3xl px-4 py-12">
         <h1 className="title-highlight mb-8 inline-flex text-2xl font-bold text-blue200">
           게시글

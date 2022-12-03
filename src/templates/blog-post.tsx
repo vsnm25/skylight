@@ -1,9 +1,13 @@
-import clsx from 'clsx';
-import { graphql, HeadProps, Link, PageProps } from 'gatsby';
+import { graphql, HeadProps, PageProps } from 'gatsby';
 import * as React from 'react';
 
-import Layout from '@/components/layout';
-import Seo from '@/components/seo';
+import Board from '@/components/Board';
+import Divider from '@/components/Divider';
+import Layout from '@/components/Layout';
+import PageButton from '@/components/PageButton';
+import Seo from '@/components/Seo';
+import Tag from '@/components/Tag';
+import Utterances from '@/components/Utterances';
 
 interface DataProps {
   markdownRemark: {
@@ -44,79 +48,67 @@ const BlogPostTemplate = ({
   data: { markdownRemark: post, next, previous, site },
 }: PageProps<DataProps>) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
-
   return (
     <Layout title={siteTitle}>
-      <article itemScope className="mx-auto max-w-3xl px-4 pt-6">
-        <header className="flex flex-col items-start justify-between gap-2">
-          <h1 className="title-highlight text-4xl font-bold text-blue200">
-            {post.frontmatter.title}
-          </h1>
-          <p className="text-blue200">{post.frontmatter.date}</p>
-        </header>
-        <hr className="my-6 h-px w-full border-gray100" />
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          className="gatsby-md"
-        />
-        {post.frontmatter.tags && (
+      <div className="mx-auto max-w-3xl px-4 pb-10">
+        <article className="pt-6">
+          <header className="flex flex-col items-start justify-between gap-2">
+            <h1 className="break-all text-4xl font-bold text-blue200">
+              {post.frontmatter.title}
+            </h1>
+            <Tag type="dark">{post.frontmatter.date}</Tag>
+          </header>
+          <Divider />
+          <section
+            dangerouslySetInnerHTML={{ __html: post.html }}
+            className="gatsby-md"
+          />
+          <Divider />
+          {post.frontmatter.tags && (
+            <>
+              <Board title="태그">
+                <div className="flex gap-2">
+                  {post.frontmatter.tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
+                </div>
+              </Board>
+              <Divider />
+            </>
+          )}
+        </article>
+        {(previous || next) && (
           <>
-            <div className="flex gap-2">
-              {post.frontmatter.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-md bg-blue100 px-2 py-1 text-xs text-white100"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-            <hr className="my-6 h-px w-full border-gray100" />
+            <nav className="mt-8">
+              <ul className="flex items-center justify-between sm:flex-wrap">
+                <li className="w-[calc(50%_-_10px)] sm:w-full">
+                  {previous && (
+                    <PageButton
+                      link={previous.fields.slug}
+                      title={previous.frontmatter.title}
+                      type="prev"
+                    />
+                  )}
+                </li>
+                <li className="w-1/2 sm:w-full">
+                  {next && (
+                    <PageButton
+                      className={previous && next && 'sm:mt-4'}
+                      link={next.fields.slug}
+                      title={next.frontmatter.title}
+                      type="next"
+                    />
+                  )}
+                </li>
+              </ul>
+            </nav>
+            <Divider />
           </>
         )}
-      </article>
-      <nav className="mx-auto mt-12 max-w-3xl px-4">
-        <ul className="flex items-center justify-between gap-4">
-          <li className="w-1/2">
-            {previous && (
-              <Link
-                className={clsx(
-                  'inline-flex flex-col items-start justify-center rounded-md p-3',
-                  'h-16 w-full',
-                  'bg-blue100 hover:bg-blue300',
-                  'text-lg text-white100',
-                  'transition-color duration-300 ease-out'
-                )}
-                rel="prev"
-                to={previous.fields.slug}
-              >
-                <span className="text-sm text-white100 hover:text-inherit">
-                  이전
-                </span>
-                {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li className="w-1/2">
-            {next && (
-              <Link
-                className={clsx(
-                  'inline-flex flex-col items-end justify-center rounded-md p-3',
-                  'h-16 w-full',
-                  'bg-blue100 hover:bg-blue300',
-                  'text-lg text-white100',
-                  'transition-color duration-300 ease-out'
-                )}
-                rel="next"
-                to={next.fields.slug}
-              >
-                <span className="text-sm text-white100">다음</span>
-                {next.frontmatter.title}
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+        <Board title="댓글">
+          <Utterances />
+        </Board>
+      </div>
     </Layout>
   );
 };

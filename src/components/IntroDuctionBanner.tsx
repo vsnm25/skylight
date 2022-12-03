@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 
-const Bio = () => {
+const IntroDuctionBanner = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       site {
@@ -26,7 +26,7 @@ const Bio = () => {
       <div
         className={clsx(
           'mx-auto flex h-full max-w-3xl',
-          "bg-[url('../images/profile.png')] bg-contain bg-[center_right_-3.5rem] bg-no-repeat "
+          "bg-[url('../images/profile.png')] bg-contain bg-[center_right_-3.5rem] bg-no-repeat"
         )}
       >
         <div className="mx-auto flex w-full items-center justify-start gap-4 px-4">
@@ -48,4 +48,4 @@ const Bio = () => {
   );
 };
 
-export default Bio;
+export default IntroDuctionBanner;

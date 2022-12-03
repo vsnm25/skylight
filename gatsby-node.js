@@ -7,7 +7,7 @@ const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   // Get all markdown blog posts sorted by date
@@ -45,13 +45,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         index === posts.length - 1 ? null : posts[index + 1].id;
 
       createPage({
-        path: post.fields.slug,
         component: blogPost,
         context: {
           id: post.id,
-          previousPostId,
           nextPostId,
+          previousPostId,
         },
+        path: post.fields.slug,
       });
     });
   }
@@ -60,11 +60,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 /**
  * @type {import('gatsby').GatsbyNode['onCreateNode']}
  */
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ actions, getNode, node }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
+    const value = createFilePath({ getNode, node });
 
     createNodeField({
       name: `slug`,
