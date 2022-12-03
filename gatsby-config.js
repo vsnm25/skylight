@@ -9,11 +9,12 @@ module.exports = {
     'gatsby-plugin-sharp',
     {
       options: {
-        aliases: {
-          '@/components': 'src/components/',
+        alias: {
+          '@/components': 'src/components',
         },
+        extensions: ['js'],
       },
-      resolve: 'gatsby-alias-imports',
+      resolve: `gatsby-plugin-alias-imports`,
     },
     {
       options: {
