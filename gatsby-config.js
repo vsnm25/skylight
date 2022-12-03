@@ -17,6 +17,14 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
+      resolve: 'gatsby-alias-imports',
+      options: {
+        aliases: {
+          '@/components': 'src/components/',
+        },
+      },
+    },
+    {
       resolve: `gatsby-remark-classes`,
       options: {
         classMap: {
@@ -37,7 +45,7 @@ module.exports = {
         web: [
           {
             name: 'Open Sans',
-            file: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap',
+            file: 'https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700&display=swap',
           },
         ],
       },
