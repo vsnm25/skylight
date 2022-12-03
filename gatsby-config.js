@@ -1,3 +1,4 @@
+const path = require('path');
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -10,7 +11,7 @@ module.exports = {
     {
       options: {
         alias: {
-          '@/components': 'src/components',
+          '@/components': path.resolve(__dirname, 'src/components'),
         },
         extensions: ['js'],
       },
