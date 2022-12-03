@@ -17,6 +17,9 @@ module.exports = {
         blue300: '#232E52',
         // gray
         gray100: '#AAAAAA',
+        // black
+        black100: '#000000',
+        black200: '#202020',
       },
     },
     screens: {

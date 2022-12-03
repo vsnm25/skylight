@@ -1,14 +1,28 @@
-import * as React from 'react';
-import { Link, graphql, PageProps, HeadProps } from 'gatsby';
-
 import clsx from 'clsx';
-import Layout from '../components/layout';
-import Seo from '../components/seo';
+import { graphql, HeadProps, Link, PageProps } from 'gatsby';
+import * as React from 'react';
+
+import Layout from '@/components/layout';
+import Seo from '@/components/seo';
 
 interface DataProps {
-  site: {
-    siteMetadata: {
-      title?: string;
+  markdownRemark: {
+    excerpt: string;
+    frontmatter: {
+      date: string;
+      description: string;
+      tags: null | string[];
+      title: string;
+    };
+    html: string;
+    id: string;
+  };
+  next: {
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
     };
   };
   previous: {
@@ -19,29 +33,15 @@ interface DataProps {
       title: string;
     };
   };
-  next: {
-    fields: {
-      slug: string;
-    };
-    frontmatter: {
-      title: string;
-    };
-  };
-  markdownRemark: {
-    id: string;
-    excerpt: string;
-    html: string;
-    frontmatter: {
-      title: string;
-      date: string;
-      description: string;
-      tags: null | string[];
+  site: {
+    siteMetadata: {
+      title?: string;
     };
   };
 }
 
 const BlogPostTemplate = ({
-  data: { previous, next, site, markdownRemark: post },
+  data: { markdownRemark: post, next, previous, site },
 }: PageProps<DataProps>) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
 

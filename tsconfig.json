@@ -10,7 +10,9 @@
       "esnext"
     ],
     "baseUrl": ".",                                  
-    "paths": {},                                      
+    "paths": {
+      "@/components/*": ["src/components/*"]
+    },                                      
     "moduleResolution": "node",                       
     "resolveJsonModule": true,                        
     "allowJs": true,                                                                   

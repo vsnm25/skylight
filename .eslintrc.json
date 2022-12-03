@@ -31,6 +31,8 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
+    "import/extensions": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "react/function-component-definition": [
       "error", 
       {
@@ -46,6 +48,11 @@
         "reservedFirst": true
       }
     ],
-    "@typescript-eslint/no-var-requires": "off"
+    "simple-import-sort/exports": "warn",
+    "simple-import-sort/imports": "warn",
+    "sort-destructure-keys/sort-destructure-keys": "warn",
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "typescript-sort-keys/interface": "warn",
+    "typescript-sort-keys/string-enum": "warn"
   }
 }

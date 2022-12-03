@@ -1,13 +1,13 @@
-import React, { ReactNode, FC } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+import React, { FC, ReactNode } from 'react';
 
 interface SeoProps {
-  title: string;
   children?: ReactNode;
   description?: string;
+  title: string;
 }
 
-const Seo: FC<SeoProps> = ({ description, title, children }) => {
+const Seo: FC<SeoProps> = ({ children, description, title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

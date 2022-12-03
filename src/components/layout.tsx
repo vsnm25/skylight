@@ -7,7 +7,7 @@ interface LayoutProps {
   title: ReactNode;
 }
 
-const Layout = ({ title, children }: LayoutProps) => {
+const Layout = ({ children, title }: LayoutProps) => {
   return (
     <div className="relative min-h-screen">
       <header className="fixed inset-x-0 z-10 backdrop-blur-sm">
@@ -17,19 +17,19 @@ const Layout = ({ title, children }: LayoutProps) => {
           </h1>
         </div>
       </header>
-      <main className="pt-16 pb-40">{children}</main>
+      <main className="pt-16 pb-32">{children}</main>
       <footer
         className={clsx(
-          'absolute inset-x-0 bottom-0 mx-auto bg-gray100 py-6',
+          'absolute inset-x-0 bottom-0 mx-auto bg-black200 py-6',
           'h-32 w-full',
           'flex items-center justify-center'
         )}
       >
         <div className="flex flex-col items-center justify-center gap-4">
-          <span className="text-white100">
-            © {new Date().getFullYear()} 정승옥 All rights reserved.
+          <span className="text-gray100">
+            © 2022 정승옥 All rights reserved.
           </span>
-          <span className="text-white100">
+          <span className="text-gray100">
             Built with{' '}
             <a className="underline" href="https://www.gatsbyjs.com">
               Gatsby
