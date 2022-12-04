@@ -1,74 +1,13 @@
-import clsx from 'clsx';
 import { graphql, PageProps } from 'gatsby';
-import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import * as React from 'react';
+import React from 'react';
 
-import IntroDuctionBanner from '@/components/IntroDuctionBanner';
-import Layout from '@/components/Layout';
-import PostCard from '@/components/PostCard';
 import Seo from '@/components/Seo';
+import HomeTemplate from '@/templates/Home';
+import { PostListQuery } from '@/types/index';
 
-interface DataProps {
-  allMarkdownRemark: {
-    nodes: {
-      excerpt: string;
-      fields: {
-        slug: string;
-      };
-      frontmatter: {
-        date: string;
-        tags: null | string[];
-        thumbnail: {
-          childImageSharp: {
-            gatsbyImageData: IGatsbyImageData;
-          };
-        };
-        title?: string;
-      };
-    }[];
-  };
-  site: {
-    siteMetadata: {
-      title: string;
-    };
-  };
-}
-
-const BlogIndex = ({ data }: PageProps<DataProps>) => {
+const BlogIndex = ({ data }: PageProps<PostListQuery>) => {
   const posts = data.allMarkdownRemark.nodes;
-
-  return (
-    <Layout>
-      <IntroDuctionBanner />
-      <div className="mx-auto max-w-3xl px-4 py-12">
-        <h1 className="title-highlight mb-8 inline-flex text-2xl font-bold text-blue200">
-          게시글
-        </h1>
-        <ol
-          className={clsx(
-            'mx-auto max-w-3xl',
-            'grid grid-cols-1 items-center justify-center gap-8'
-          )}
-        >
-          {posts.map((post) => {
-            const title = post.frontmatter.title || post.fields.slug;
-            const image = getImage(post.frontmatter.thumbnail);
-            return (
-              <PostCard
-                key={post.fields.slug}
-                date={post.frontmatter.date}
-                description={post.excerpt}
-                image={image}
-                link={post.fields.slug}
-                tags={post.frontmatter.tags}
-                title={title}
-              />
-            );
-          })}
-        </ol>
-      </div>
-    </Layout>
-  );
+  return <HomeTemplate posts={posts} />;
 };
 
 export default BlogIndex;
@@ -84,7 +23,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { category: { ne: null } } }
+      sort: { frontmatter: { date: DESC } }
+    ) {
       nodes {
         excerpt
         fields {
@@ -94,7 +36,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
-          tags
+          category
           thumbnail {
             childImageSharp {
               gatsbyImageData(

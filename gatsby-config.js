@@ -12,6 +12,9 @@ module.exports = {
       options: {
         alias: {
           '@/components': path.resolve(__dirname, 'src/components'),
+          '@/hooks': path.resolve(__dirname, 'src/hooks'),
+          '@/templates': path.resolve(__dirname, 'src/templates'),
+          '@/types': path.resolve(__dirname, 'src/types'),
         },
         extensions: ['js'],
       },

@@ -14,9 +14,8 @@ const PageButton: FC<PageButtonProps> = ({ className, link, title, type }) => {
   return (
     <Link
       className={clsx(
-        `inline-flex flex-col items-${
-          isPrev ? 'start' : 'end'
-        } justify-center rounded-md p-3`,
+        `inline-flex flex-col justify-center rounded-md p-3`,
+        isPrev ? 'items-start' : 'items-end',
         'h-16 w-full',
         'bg-blue100 hover:bg-blue200',
         'text-lg text-white100',

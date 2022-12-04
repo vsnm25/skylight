@@ -1,25 +1,25 @@
 import clsx from 'clsx';
 import { Link } from 'gatsby';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import Tag from './Tag';
 
 interface PostCardProps {
+  category: string;
   date: string;
   description: string;
   image?: IGatsbyImageData;
   link: string;
-  tags: null | string[];
   title: string;
 }
 
 const PostCard: FC<PostCardProps> = ({
+  category,
   date,
   description,
   image,
   link,
-  tags,
   title,
 }) => {
   return (
@@ -60,9 +60,7 @@ const PostCard: FC<PostCardProps> = ({
             </div>
             <div className="flex gap-2">
               <Tag type="dark">{date}</Tag>
-              {tags?.map((tag) => (
-                <Tag key={tag}>#{tag}</Tag>
-              ))}
+              <Tag>{category}</Tag>
             </div>
           </div>
         </article>
@@ -71,4 +69,4 @@ const PostCard: FC<PostCardProps> = ({
   );
 };
 
-export default PostCard;
+export default memo(PostCard);

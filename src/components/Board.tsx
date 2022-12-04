@@ -12,7 +12,7 @@ const Board: FC<BoardProps> = ({ children, size = 8, title }) => {
     <section
       className={clsx('flex flex-col items-start justify-start', `gap-${size}`)}
     >
-      <h1 className="title-highlight text-3xl font-bold text-blue200">
+      <h1 className="title-highlight text-2xl font-bold text-blue200">
         {title}
       </h1>
       {children}
