@@ -51,13 +51,9 @@ const PostCard: FC<PostCardProps> = ({
           )}
           <div className="flex flex-col items-start gap-4 py-4 pr-6 sm:py-6 sm:px-4">
             <div className="flex flex-col gap-2">
-              <header>
-                <h2 className="text-2xl font-bold text-blue200">
-                  <Link to={link}>
-                    <span>{title}</span>
-                  </Link>
-                </h2>
-              </header>
+              <h2 className="text-2xl font-bold text-blue200">
+                <span>{title}</span>
+              </h2>
               <section>
                 <p className="line-clamp-3">{description}</p>
               </section>
