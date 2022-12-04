@@ -16,7 +16,12 @@ const NotFoundPage = () => {
           'bg-blue200'
         )}
       >
-        <StaticImage alt="404페이지 이미지" src="../images/404.png" />
+        <StaticImage
+          alt="404페이지 이미지"
+          quality={90}
+          src="../images/404.png"
+          width={600}
+        />
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-2xl font-bold text-white100 sm:text-base">
             원하시는 페이지를 찾을 수 없습니다
@@ -25,7 +30,7 @@ const NotFoundPage = () => {
             className="text-lg text-white100 hover:underline sm:text-sm"
             to="/"
           >
-            돌아가기
+            홈으로
           </Link>
         </div>
       </section>

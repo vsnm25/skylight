@@ -16,6 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
             <StaticImage
               alt="로고 이미지"
               height={24}
+              quality={90}
               src="../images/logo-full.png"
             />
           </Link>
@@ -34,6 +35,7 @@ const Layout = ({ children }: LayoutProps) => {
             <Link to="https://github.com/vsnm25">
               <StaticImage
                 alt="깃헙 로고"
+                quality={90}
                 src="../images/github/GitHub-Mark-Light-32px.png"
               />
             </Link>
