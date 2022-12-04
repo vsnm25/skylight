@@ -34,6 +34,11 @@ export interface PostDetailQuery {
       date: string;
       description: string;
       tags: null | string[];
+      thumbnail: {
+        childImageSharp: {
+          gatsbyImageData: IGatsbyImageData;
+        };
+      };
       title: string;
     };
     html: string;
