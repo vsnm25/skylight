@@ -32,7 +32,7 @@ const IntroductionBanner = () => {
         <div className="mx-auto flex w-full items-center justify-start gap-4 px-4">
           {author?.name && (
             <div className="flex flex-col">
-              <p className="break-keep text-2xl font-bold text-white100 sm:text-xl">
+              <p className="break-keep text-2xl font-bold leading-10 text-white100 sm:text-xl sm:leading-8">
                 안녕하세요. 👋
                 <br />
                 프론트엔드 엔지니어 <strong>{author.name}</strong>
