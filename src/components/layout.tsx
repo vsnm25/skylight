@@ -5,17 +5,20 @@ import React, { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;
-  title: ReactNode;
 }
 
-const Layout = ({ children, title }: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="relative min-h-screen">
       <header className="fixed inset-x-0 z-10 backdrop-blur-sm">
         <div className="mx-auto flex h-16 max-w-3xl items-center px-4">
-          <h1 className="text-3xl font-bold text-blue300">
-            <Link to="/">{title}</Link>
-          </h1>
+          <Link to="/">
+            <StaticImage
+              alt="로고 이미지"
+              height={24}
+              src="../images/logo-full.png"
+            />
+          </Link>
         </div>
       </header>
       <main className="pt-16 pb-56">{children}</main>

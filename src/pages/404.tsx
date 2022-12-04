@@ -1,23 +1,14 @@
 import clsx from 'clsx';
-import { graphql, Link, PageProps } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
 
-interface DataProps {
-  site: {
-    siteMetadata: {
-      title: string;
-    };
-  };
-}
-
-const NotFoundPage = ({ data }: PageProps<DataProps>) => {
-  const siteTitle = data.site.siteMetadata.title;
+const NotFoundPage = () => {
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <section
         className={clsx(
           'flex flex-col items-center justify-center',

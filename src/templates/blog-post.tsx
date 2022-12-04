@@ -37,19 +37,13 @@ interface DataProps {
       title: string;
     };
   };
-  site: {
-    siteMetadata: {
-      title?: string;
-    };
-  };
 }
 
 const BlogPostTemplate = ({
-  data: { markdownRemark: post, next, previous, site },
+  data: { markdownRemark: post, next, previous },
 }: PageProps<DataProps>) => {
-  const siteTitle = site.siteMetadata?.title || `Title`;
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <div className="mx-auto max-w-3xl px-4 pb-10">
         <article className="pt-6">
           <header className="flex flex-col items-start justify-between gap-2">
@@ -132,11 +126,6 @@ export const pageQuery = graphql`
     $previousPostId: String
     $nextPostId: String
   ) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)

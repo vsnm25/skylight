@@ -35,11 +35,10 @@ interface DataProps {
 }
 
 const BlogIndex = ({ data }: PageProps<DataProps>) => {
-  const siteTitle = data.site.siteMetadata?.title || 'Title';
   const posts = data.allMarkdownRemark.nodes;
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <IntroDuctionBanner />
       <div className="mx-auto max-w-3xl px-4 py-12">
         <h1 className="title-highlight mb-8 inline-flex text-2xl font-bold text-blue200">
