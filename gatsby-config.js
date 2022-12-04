@@ -136,7 +136,7 @@ module.exports = {
       summary: '배운 것을 정리하고 공유합니다.',
     },
     description: '개발 관련 지식을 공유하고 정리합니다.',
-    siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/',
+    siteUrl: 'https://skylight.vercel.app',
     title: 'skylight',
   },
 };
