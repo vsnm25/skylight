@@ -81,18 +81,6 @@ module.exports = {
     },
     {
       options: {
-        background_color: '#024aad',
-        display: 'browser',
-        icon: 'src/images/logo.png',
-        name: 'skylight',
-        short_name: 'skylight',
-        start_url: '/',
-        theme_color: '#024aad',
-      },
-      resolve: 'gatsby-plugin-manifest',
-    },
-    {
-      options: {
         feeds: [
           {
             output: '/rss.xml',
