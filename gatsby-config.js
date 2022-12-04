@@ -72,7 +72,9 @@ module.exports = {
             },
             resolve: 'gatsby-remark-responsive-iframe',
           },
-          'gatsby-remark-prismjs',
+          {
+            resolve: 'gatsby-remark-vscode',
+          },
         ],
       },
       resolve: 'gatsby-transformer-remark',
