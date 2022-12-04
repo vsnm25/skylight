@@ -99,7 +99,7 @@ const BlogPostTemplate = ({
             <Divider />
           </>
         )}
-        <Board title="댓글">
+        <Board size={6} title="댓글">
           <Utterances />
         </Board>
       </div>
