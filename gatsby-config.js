@@ -10,6 +10,19 @@ module.exports = {
     'gatsby-plugin-sharp',
     {
       options: {
+        background_color: `#024AAD`,
+        description: '개발 관련 지식을 공유하고 정리합니다.',
+        display: `standalone`,
+        icon: 'src/images/logo.png',
+        name: `skylight`,
+        short_name: `skylight`,
+        start_url: `/`,
+        theme_color: `#024AAD`,
+      },
+      resolve: `gatsby-plugin-manifest`,
+    },
+    {
+      options: {
         alias: {
           '@/components': path.resolve(__dirname, 'src/components'),
           '@/hooks': path.resolve(__dirname, 'src/hooks'),
