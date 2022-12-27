@@ -2,7 +2,7 @@
   "name": "skylight",
   "private": true,
   "description": "개발 지식을 정리하고 공유하는 블로그입니다.",
-  "version": "0.1.0",
+  "version": "1.20221228.0",
   "author": "정승옥 <vsnm25@gmail.com>",
   "bugs": {
     "url": "https://github.com/vsnm25/skylight"
