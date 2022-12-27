@@ -1,116 +1,76 @@
 ---
-title: New Beginnings
-date: '2015-05-28T22:40:32.169Z'
-description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
-thumbnail: './salty_egg.jpg'
-tags: ['test']
-category: '개발'
+title: 나만의 eslint-config
+date: '2022-12-27T22:40:32.169Z'
+description: 코드의 가독성을 높이고 일관성을 유지하기 위해 협업 시 airbnb 스타일 가이드 라인과 같은 룰을 사용한다.
+thumbnail: './thumbnail.png'
+tags: ['eslint']
+category: 'DEV'
 ---
+### 시작 배경
 
-Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.
+협업 시 일관된 코드 스타일을 유지하기 위해 다양한 eslint 설정, 규칙을 적용한다.
+react, node, next 등 내가 사용하는 프로젝트 환경에 따라 관련 필요한 eslint-config 패키지들을 설치하고
+룰을 작성하거나 복사 붙여 넣기를 했었다. 그런데 회사 프로젝트를 보니 **eslint 설정을 하나의 패키지**로 만들어 extends 필드에
+추가하는 것을 알게 됐다.
 
-```typescript {numberLines}
-const a: number = 1;
-const b: string = 1;
+오???? 굉장히 **깔끔하고 심플**하다.
+개인 프로젝트의 eslintrc를 보며 나만의 `eslint-config 패키지` 를 만들어 보기로 했다.
+
+### 파일 만들기
 ```
+ ├── index.js
+    ... 
+ └── package.json
+```
+**index 와 package.json 파일**을 생성한다. 나의 경우 index 파일에는 리액트, 자바스크립트 / 타입스크립트 관련 config를 
+정의했다. next, prettier, jest 등 추가하고 싶은 config가 있다면 파일을 추가하여 작성하고 나중에 이 패키지를 사용하는 곳에서 extends 필드에 `설정 이름/파일명` 으로 추가하여 사용하면 된다.
 
-## On deer horse aboard tritely yikes and much
+### 룰 작성하기
+```javascript
+module.exports = {
+  env: { browser: true },
+  extends: ['airbnb', 'airbnb/hooks'],
+  parserOptions: { ecmaVersion: 'latest' },
+  rules: {
+    // 룰 커스텀하기
+  },
+  overrides: [
+    // 특정 파일에만 적용하고 싶은 경우 작성하기
+  ]
+};
+```
+간단한 예시 코드로 index 파일에 필요한 eslint-config 패키지와 rules를 작성하면 된다. rules 필드에는 eslint-config 패키지 룰의 기본값에서 변경이 필요한 룰을 커스텀한다. overrides 필드에는 타입스크립트와 같이 특정 파일에만 적용해야할 경우 사용한다.
 
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+### exports 필드
+```JSON
+"exports": {
+  ".": "./index.js",
+  "./prettier": "./prettier.js",
+},
+```
+package.json 파일의 exports 필드를 통해 패키지 entry point를 지정할 수 있다. exports 필드을 사용하면 filesystem 상의 위치와 import path를 다르게 지정할 수 있다.
 
-- This however showed weasel
-- Well uncritical so misled
-  - this is very interesting
-- Goodness much until that fluid owl
+### 배포하기
+```
+npm publish
+```
+모든 작업이 끝났다면 패키지를 배포합니다.
 
-When she reached the first hills of the **Italic Mountains**, she had a last
-view back on the skyline of her hometown _Bookmarksgrove_, the headline of
-[Alphabet Village](http://google.com) and the subline of her own road, the Line
-Lane. Pityful a rhetoric question ran over her cheek, then she continued her
-way. On her way she met a copy.
+### 사용하기
+```
+## npm
+npm install -D  eslint-config-[설정 이름]
 
-### Overlaid the jeepers uselessly much excluding
+## yarn
+yarn add -D eslint-config-[설정 이름]
+```
+적용하려는 프로젝트에 패키지를 설치하고 eslintrc 파일의 extends 필드에 설정 이름을 추가하면 끝이다.
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with
-[Longe and Parole](http://google.com) and dragged her into their agency, where
-they abused her for their projects again and again. And if she hasn’t been
-rewritten, then they are still using her.
+### 마치며
+호기심에 시작하여 만들어본 패키지였지만 만드는 과정에서 **eslintrc 와 package.json 각 필드의 역할, peerDependencies 명시의 필요성**을 
+이해할 수 있었다. 다음에는 플러그인을 만들어 보며 직접 규칙을 만들어 봐야겠다.
 
-> Far far away, behind the word mountains, far from the countries Vokalia and
-> Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-> right at the coast of the Semantics, a large language ocean.
-
-It is a paradisematic country, in which roasted parts of sentences fly into your
-mouth. Even the all-powerful Pointing has no control about the blind texts it is
-an almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar.
-
-### According a funnily until pre-set or arrogant well cheerful
-
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
-
-1.  So baboon this
-2.  Mounted militant weasel gregariously admonishingly straightly hey
-3.  Dear foresaw hungry and much some overhung
-4.  Rash opossum less because less some amid besides yikes jeepers frenetic
-    impassive fruitlessly shut
-
-When she reached the first hills of the Italic Mountains, she had a last view
-back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-Village and the subline of her own road, the Line Lane. Pityful a rhetoric
-question ran over her cheek, then she continued her way. On her way she met a
-copy.
-
-> The copy warned the Little Blind Text, that where it came from it would have
-> been rewritten a thousand times and everything that was left from its origin
-> would be the word "and" and the Little Blind Text should turn around and
-> return to its own, safe country.
-
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with Longe and Parole
-and dragged her into their agency, where they abused her for their projects
-again and again. And if she hasn’t been rewritten, then they are still using
-her. Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts.
-
-#### Silent delightfully including because before one up barring chameleon
-
-Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-large language ocean. A small river named Duden flows by their place and
-supplies it with the necessary regelialia. It is a paradisematic country, in
-which roasted parts of sentences fly into your mouth.
-
-Even the all-powerful Pointing has no control about the blind texts it is an
-almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox
-advised her not to do so, because there were thousands of bad Commas, wild
-Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.
-
-##### Wherever far wow thus a squirrel raccoon jeez jaguar this from along
-
-She packed her seven versalia, put her initial into the belt and made herself on
-the way. When she reached the first hills of the Italic Mountains, she had a
-last view back on the skyline of her hometown Bookmarksgrove, the headline of
-Alphabet Village and the subline of her own road, the Line Lane. Pityful a
-rhetoric question ran over her cheek, then she continued her way. On her way she
-met a copy.
-
-###### Slapped cozy a that lightheartedly and far
-
-The copy warned the Little Blind Text, that where it came from it would have
-been rewritten a thousand times and everything that was left from its origin
-would be the word "and" and the Little Blind Text should turn around and return
-to its own, safe country. But nothing the copy said could convince her and so it
-didn’t take long until a few insidious Copy Writers ambushed her, made her drunk
-with Longe and Parole and dragged her into their agency, where they abused her
-for their projects again and again.
+### 참고
+- [kakao Tech - ESLint 조금 더 잘 활용하기](https://tech.kakao.com/2019/12/05/make-better-use-of-eslint/)
+- [toss - CommonJS와 ESM에 모두 대응하는 라이브러리 개발하기: exports field](https://toss.tech/article/commonjs-esm-exports-field)
+- [eslint-config-yceffort, 나만의 eslint-config 만들기](https://yceffort.kr/2020/09/eslint-config-yceffort)

@@ -1,4 +1,6 @@
 .gatsby-md {
+  letter-spacing: 0.5px;
+
   h1,
   h2,
   h3,
@@ -9,15 +11,13 @@
     font-weight: 700;
     color: #024aad;
     line-height: 1.1;
-    letter-spacing: -0.5px;
   }
 
   h3,
   h4,
   h5,
   h6 {
-    margin-top: 24px;
-    margin-bottom: 16px;
+    margin: 22px 0px;
   }
 
   h1 {
@@ -63,7 +63,7 @@
   /* Prose */
 
   p {
-    line-height: 1.5;
+    line-height: 1.8;
     margin-bottom: 20px;
   }
 
@@ -114,9 +114,15 @@
     margin: 16px 0;
   }
 
+  pre {
+    margin: 16px 0;
+    code {
+      background-color: transparent;
+    }
+  }
+
   table {
     width: 100%;
-    margin-bottom: var(--spacing-8);
     border-collapse: collapse;
     border-spacing: 0.25rem;
   }
@@ -134,5 +140,14 @@
 
   hr {
     margin: 32px 0px;
+  }
+  
+  code {
+    padding: 2px 4px;
+    background-color: #024aad;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 16px;
+    box-sizing: border-box;
   }
 }

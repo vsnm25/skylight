@@ -10,8 +10,8 @@ interface PostSummaryProps {
 
 const PostSummary: FC<PostSummaryProps> = ({ category, date, title }) => {
   return (
-    <header className="flex flex-col items-start justify-between gap-2">
-      <h1 className="break-all text-4xl font-bold text-blue200">{title}</h1>
+    <header className="flex flex-col items-start justify-between gap-4">
+      <h1 className="break-keep text-4xl font-bold text-blue200">{title}</h1>
       <div className="flex items-center gap-2">
         <Tag type="dark">{date}</Tag>
         <Tag type="light">{category}</Tag>
