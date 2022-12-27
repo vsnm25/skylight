@@ -1,7 +1,7 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
 
-import Seo from '@/components/seo';
+import Seo from '@/components/Seo';
 import HomeTemplate from '@/templates/Home';
 import { PostListQuery } from '@/types/index';
 
